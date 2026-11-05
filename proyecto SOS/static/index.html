@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>USM SOS - Sistema de Emergencias</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Toast Notification (Desaparece en 5s) -->
+        <div id="toast-message" class="toast hidden"></div>
+
+        <!-- HEADER -->
+        <header class="glass-header">
+            <div class="logo">USM <span>SOS</span></div>
+            <div class="status-indicator">
+                <span class="dot pulse"></span>
+                <span>Sistema Activo</span>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="content">
+            
+            <!-- SECTION 1: SOS BUTTON -->
+            <section id="sos-section" class="active-section">
+                <div class="warning-text">
+                    <h1>¿Emergencia?</h1>
+                    <p>Presione el botón para alertar a las autoridades.</p>
+                </div>
+                
+                <div class="sos-wrapper">
+                    <div class="ripple-container">
+                        <div class="ripple"></div>
+                        <div class="ripple delay-1"></div>
+                        <div class="ripple delay-2"></div>
+                    </div>
+                    <button id="sos-btn" class="sos-btn">
+                        <span>SOS</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- SECTION 2: IA RECOMMENDATION (Redirección Automática) -->
+            <section id="ia-section">
+                <div class="ia-header">
+                    <div class="ia-icon-wrapper pulse-blue">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a10 10 0 1 0 10 10H12V2z"></path>
+                            <path d="M12 12 2.1 7.1"></path>
+                            <path d="m12 12 6.9 8.2"></path>
+                        </svg>
+                    </div>
+                    <h2>Asistencia Inteligente</h2>
+                </div>
+                
+                <div class="glass-panel ia-premium-box">
+                    <h3>Instrucción Inmediata</h3>
+                    <p id="ia-recommendation-text"></p>
+                </div>
+                
+                <div class="glass-panel contact-panel" style="margin-top: 20px;">
+                    <p style="text-align: center; font-weight: 600; color: #f87171;">Autoridades en Camino</p>
+                    <p style="text-align: center; font-size: 0.85rem;">Si requiere dar más detalles, use estos contactos de emergencia directos:</p>
+                    <div class="contact-card" style="margin-top: 15px;">
+                        <div class="contact-info-block">
+                            <h3>Emergencias Nacionales</h3>
+                        </div>
+                        <a href="tel:911" class="call-btn emergency-call">911</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-info-block">
+                            <h3>Seguridad USM</h3>
+                        </div>
+                        <a href="tel:02120000000" class="call-btn">Llamar</a>
+                    </div>
+                </div>
+                
+                <button id="back-to-sos-btn" class="back-btn" style="margin-top: 30px;">Volver a Inicio</button>
+            </section>
+
+            <!-- SECTION 3: CONTACTOS -->
+            <section id="contact-section">
+                <h2>Directorio de Autoridades</h2>
+                <div class="glass-panel contact-panel">
+                    <p>Comuníquese directamente con las autoridades competentes si la situación lo requiere.</p>
+                    
+                    <div class="contact-card">
+                        <div class="contact-info-block">
+                            <h3>Seguridad Campus USM</h3>
+                            <p>0212-000-0000</p>
+                        </div>
+                        <a href="tel:02120000000" class="call-btn">Llamar</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-info-block">
+                            <h3>Emergencias Nacionales (911)</h3>
+                            <p>911</p>
+                        </div>
+                        <a href="tel:911" class="call-btn emergency-call">Llamar</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-info-block">
+                            <h3>Bomberos Universitarios</h3>
+                            <p>0212-111-1111</p>
+                        </div>
+                        <a href="tel:02121111111" class="call-btn">Llamar</a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- BOTTOM NAVIGATION -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-target="sos-section">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span>SOS</span>
+            </button>
+            <button class="nav-btn" data-target="contact-section">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span>Contactos</span>
+            </button>
+        </nav>
+
+        <!-- FORM MODAL -->
+        <div id="emergency-modal" class="modal-overlay hidden">
+            <div class="modal-content glass-panel">
+                <h2 class="modal-title">Detalles de la Emergencia</h2>
+                <p style="font-size: 0.85rem; color: #f87171; margin-bottom: 15px;">Su ubicación ya fue capturada.</p>
+                <form id="emergency-form">
+                    <div class="form-row">
+                        <input type="text" id="f-nombre" placeholder="Nombre" required>
+                        <input type="text" id="f-apellido" placeholder="Apellido" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="number" id="f-edad" placeholder="Edad" required>
+                        <input type="tel" id="f-telefono" placeholder="Teléfono de contacto" required>
+                    </div>
+                    <div class="form-group">
+                        <label>¿Es usted el afectado o un observador?</label>
+                        <select id="f-tipo" required>
+                            <option value="Afectado">Soy la persona afectada</option>
+                            <option value="Observador">Soy un observador / tercero</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Breve resumen de lo que pasó:</label>
+                        <textarea id="f-resumen" rows="3" placeholder="Ej. Hay un incendio en el laboratorio de química..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar Alerta Inmediata</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
